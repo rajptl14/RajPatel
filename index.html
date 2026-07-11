@@ -62,7 +62,7 @@
     text-transform:uppercase;
     color:var(--teal-deep);
   }
- 
+
   /* NAV */
   header.nav{
     position:sticky; top:0; z-index:50;
@@ -99,7 +99,7 @@
   .theme-toggle svg{width:16px; height:16px; stroke:var(--ink); transition:transform .4s ease;}
   html[data-theme="dark"] .theme-toggle svg{transform:rotate(180deg);}
   .nav-toggle{display:none;}
- 
+
   /* HERO */
   .hero{
     padding:96px 0 72px;
@@ -146,7 +146,7 @@
   .btn.primary:hover{background:var(--teal-deep); border-color:var(--teal-deep);}
   .btn.ghost{border-color:var(--line); color:var(--ink);}
   .btn.ghost:hover{border-color:var(--ink);}
- 
+
   .hero-side{display:flex; flex-direction:column; gap:20px;}
   .hero-illo{
     border:1px solid var(--line); border-radius:6px;
@@ -174,7 +174,7 @@
   }
   .hero-plate .plate-row:last-child{border-bottom:none;}
   .hero-plate .plate-row b{color:var(--ink); font-weight:500;}
- 
+
   /* SECTION shared */
   section{padding:76px 0; border-bottom:1px solid var(--line);}
   .section-head{
@@ -187,7 +187,7 @@
     font-family:'Fraunces', serif; font-weight:500; font-size:30px;
   }
   .section-head .rule{flex:1; height:1px; background:var(--line);}
- 
+
   /* ABOUT */
   .about-grid{display:grid; grid-template-columns: 1fr 1fr; gap:56px;}
   .about-grid p{margin-bottom:16px; color:var(--muted); font-size:15.5px;}
@@ -199,7 +199,7 @@
   .coursework li span.code{
     font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--teal-deep);
   }
- 
+
   /* TIMELINE / RESEARCH */
   .timeline{position:relative; padding-left:28px;}
   .timeline::before{
@@ -220,7 +220,7 @@
   }
   .t-item h3{font-family:'Fraunces', serif; font-weight:500; font-size:20px; margin-bottom:8px;}
   .t-item p{color:var(--muted); font-size:15px; max-width:640px;}
- 
+
   /* SKILLS */
   .skill-groups{display:grid; grid-template-columns:repeat(3,1fr); gap:32px;}
   .skill-group h4{
@@ -235,7 +235,7 @@
     transition:all .2s ease; cursor:default;
   }
   .pill:hover{border-color:var(--teal); background:var(--bg);}
- 
+
   /* CONTACT */
   .contact-inner{
     display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:32px;
@@ -250,21 +250,21 @@
     border-bottom:1px solid var(--line); padding-bottom:2px; width:fit-content;
   }
   .contact-links a:hover{border-color:var(--teal);}
- 
+
   footer{padding:28px 0; text-align:center;}
   footer p{
     font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--muted);
     letter-spacing:0.06em;
   }
- 
+
   .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
   .reveal.show{opacity:1; transform:translateY(0);}
- 
+
   @media (prefers-reduced-motion: reduce){
     .reveal{opacity:1; transform:none; transition:none;}
     html{scroll-behavior:auto;}
   }
- 
+
   @media (max-width: 860px){
     .hero-inner{grid-template-columns:1fr;}
     .about-grid{grid-template-columns:1fr;}
@@ -274,7 +274,7 @@
 </style>
 </head>
 <body>
- 
+
 <header class="nav">
   <div class="nav-inner">
     <div class="nav-mark">Raj Patel<span>.</span></div>
@@ -303,18 +303,17 @@
     </div>
   </div>
 </header>
- 
+
 <section class="hero">
   <div class="wrap hero-inner">
     <div>
       <div class="specimen-tag">IMSA '26 → UW–Madison '30</div>
       <h1 class="title">Studying life<br>at the <em>cellular</em><br>scale.</h1>
-      <p class="hero-sub">I'm an incoming first-year student at the University of Wisconsin–Madison studying Molecular and Cellular Biology. I'm passionate about research, computational biology, and science communication, with a particular interest in how these fields intersect to advance human health and deepen our understanding of biology. I'm always eager to learn, collaborate, and connect with others who share these interests.
-
-Feel free to reach out at rhpatel6@wisc.edu.</p>
+      <p class="hero-sub">I'm an incoming first-year at the University of Wisconsin–Madison studying Molecular &amp; Cellular Biology. I'm interested in research, computational biology, and science communication — and how these fields intersect to advance the human condition.</p>
       <div class="hero-cta">
         <a class="btn primary" href="#contact">Get in touch</a>
-        <a class="btn ghost" href="https://github.com/rajptl14" target="_blank" rel="noopener">View GitHub</a>
+        <a class="btn ghost" href="https://drive.google.com/file/d/1bdrNMCjBRyLtpSRfwJo8kWOQ1OhPn6xq/view?usp=sharing" target="_blank" rel="noopener">View CV</a>
+        <a class="btn ghost" href="https://github.com/rajptl14" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
     <div class="hero-plate">
@@ -326,7 +325,7 @@ Feel free to reach out at rhpatel6@wisc.edu.</p>
     </div>
   </div>
 </section>
- 
+
 <section id="about">
   <div class="wrap">
     <div class="section-head">
@@ -334,7 +333,7 @@ Feel free to reach out at rhpatel6@wisc.edu.</p>
     </div>
     <div class="about-grid">
       <div class="reveal">
-        <p>I'm an incoming first-year at the University of Wisconsin–Madison, studying Molecular &amp; Cellular Biology. I'm interested in learning about research, computational biology, and science communication. Specifically how these fields can intersect to advance the human condition.</p>
+        <p>I'm an incoming first-year at the University of Wisconsin–Madison, studying Molecular &amp; Cellular Biology. I'm interested in learning about research, computational biology, and science communication — specifically how these fields can intersect to advance the human condition.</p>
         <p>I'd love to connect — feel free to reach out at <a href="mailto:rhpatel6@wisc.edu" style="border-bottom:1px solid var(--line);">rhpatel6@wisc.edu</a>.</p>
         <div class="label" style="margin:22px 0 10px;">Toolkit</div>
         <div class="pill-row">
@@ -358,7 +357,7 @@ Feel free to reach out at rhpatel6@wisc.edu.</p>
     </div>
   </div>
 </section>
- 
+
 <section id="research">
   <div class="wrap">
     <div class="section-head">
@@ -388,7 +387,7 @@ Feel free to reach out at rhpatel6@wisc.edu.</p>
     </div>
   </div>
 </section>
- 
+
 <section id="experience">
   <div class="wrap">
     <div class="section-head">
@@ -398,12 +397,12 @@ Feel free to reach out at rhpatel6@wisc.edu.</p>
       <div class="t-item reveal">
         <div class="t-meta">Nonprofit · Community Impact</div>
         <h3>AURA Awareness</h3>
-        <p>Co-founded a nonprofit organization dedicated to supporting early breast cancer detection and awareness through fundraising and educational initiatives. $750 raised to date. <a href="https://www.gofundme.com/f/auras-mission-detect-cancer-early" target="_blank" rel="noopener" style="border-bottom:1px solid var(--line);">View the GoFundMe →</a></p>
+        <p>Co-founded a nonprofit organization dedicated to supporting early breast cancer detection and awareness through fundraising and educational initiatives. $750 raised to date. <a href="https://aura-awareness.vercel.app/" target="_blank" rel="noopener" style="border-bottom:1px solid var(--line);">Visit AURA Awareness →</a> · <a href="https://www.gofundme.com/f/auras-mission-detect-cancer-early" target="_blank" rel="noopener" style="border-bottom:1px solid var(--line);">GoFundMe →</a></p>
       </div>
     </div>
   </div>
 </section>
- 
+
 <section id="publications">
   <div class="wrap">
     <div class="section-head">
@@ -412,7 +411,7 @@ Feel free to reach out at rhpatel6@wisc.edu.</p>
     <div class="timeline">
       <div class="t-item reveal">
         <div class="t-meta">CVPR 2026 · First Author</div>
-        <h3>Multimodal Discovery of Hidden Alzheimer's Disease Subtypes from MRI Data</h3>
+        <h3><a href="https://drive.google.com/file/d/1g3ar25YMvLuOJoCNnqaFKBgEcfqEkeRv/view?usp=sharing" target="_blank" rel="noopener" style="color:inherit; border-bottom:1px solid var(--line);">Multimodal Discovery of Hidden Alzheimer's Disease Subtypes from MRI Data</a></h3>
         <p>Analyzed data for an unsupervised ML pipeline identifying structural and functional subgroups in Alzheimer's disease.</p>
       </div>
       <div class="t-item reveal">
@@ -433,7 +432,7 @@ Feel free to reach out at rhpatel6@wisc.edu.</p>
     </div>
   </div>
 </section>
- 
+
 <section id="skills">
   <div class="wrap">
     <div class="section-head">
@@ -471,22 +470,23 @@ Feel free to reach out at rhpatel6@wisc.edu.</p>
     </div>
   </div>
 </section>
- 
+
 <section id="contact" style="border-bottom:none;">
   <div class="wrap contact-inner">
     <h2>Whether it's research, collaboration, or just a conversation about science and code — my inbox is open.</h2>
     <div class="contact-links">
       <a href="mailto:rajptl2026@gmail.com">rajptl2026@gmail.com</a>
       <a href="https://github.com/rajptl14" target="_blank" rel="noopener">github.com/rajptl14</a>
-      <a href="https://www.linkedin.com/in/raj-patel-115321330" target="_blank" rel="noopener">www.linkedin.com/in/rptl</a>
+      <a href="https://www.linkedin.com/in/raj-patel-115321330" target="_blank" rel="noopener">linkedin.com/in/raj-patel</a>
+      <a href="https://drive.google.com/file/d/1bdrNMCjBRyLtpSRfwJo8kWOQ1OhPn6xq/view?usp=sharing" target="_blank" rel="noopener">CV — PDF</a>
     </div>
   </div>
 </section>
- 
+
 <footer>
   <p>Raj Patel — Molecular & Cellular Biology, UW–Madison '30</p>
 </footer>
- 
+
 <script>
   // Light/dark mode toggle
   (function(){
@@ -509,7 +509,7 @@ Feel free to reach out at rhpatel6@wisc.edu.</p>
       }
     });
   })();
- 
+
   const items = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
@@ -518,7 +518,7 @@ Feel free to reach out at rhpatel6@wisc.edu.</p>
   }, {threshold:0.15});
   items.forEach(i=>io.observe(i));
 </script>
- 
+
 </body>
 </html>
  
