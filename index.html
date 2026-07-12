@@ -10,6 +10,7 @@
 <style>
   :root{
     --bg:#F6F7F4;
+    --bg-rgb:246,247,244;
     --bg-panel:#EFF2ED;
     --ink:#1C2B28;
     --teal:#2E7D6B;
@@ -21,6 +22,7 @@
   }
   html[data-theme="dark"]{
     --bg:#111C1A;
+    --bg-rgb:17,28,26;
     --bg-panel:#17231F;
     --ink:#EDF2EF;
     --teal:#4FB39E;
@@ -66,9 +68,10 @@
   /* NAV */
   header.nav{
     position:sticky; top:0; z-index:50;
-    background:rgba(246,247,244,0.88);
+    background:rgba(var(--bg-rgb),0.88);
     backdrop-filter:blur(6px);
     border-bottom:1px solid var(--line);
+    transition:background-color .3s ease, border-color .3s ease;
   }
   .nav-inner{
     max-width:var(--max); margin:0 auto; padding:18px 32px;
@@ -76,6 +79,7 @@
   }
   .nav-mark{
     font-family:'Fraunces', serif; font-weight:600; font-size:19px;
+    color:var(--ink);
   }
   .nav-mark span{color:var(--teal);}
   .nav-links{display:flex; gap:28px; list-style:none;}
@@ -482,7 +486,7 @@
     <div class="contact-links">
       <a href="mailto:rajptl2026@gmail.com">rajptl2026@gmail.com</a>
       <a href="https://github.com/rajptl14" target="_blank" rel="noopener">github.com/rajptl14</a>
-      <a href="www.linkedin.com/in/rptl" target="_blank" rel="noopener">linkedin.com/in/raj-patel</a>
+      <a href="https://www.linkedin.com/in/rptl" target="_blank" rel="noopener">linkedin.com/in/raj-patel</a>
       <a href="https://drive.google.com/file/d/1bdrNMCjBRyLtpSRfwJo8kWOQ1OhPn6xq/view?usp=sharing" target="_blank" rel="noopener">CV — PDF</a>
     </div>
   </div>
