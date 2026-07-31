@@ -4,108 +4,1075 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Raj Patel — Research Portfolio</title>
-  <meta name="description" content="Research Portfolio of Raj Patel — Molecular & Cellular Biology, UW–Madison. Exploring computational tools for biomedical discovery.">
+  <meta name="description" content="Research Portfolio of Raj Patel — Molecular & Cellular Biology, UW–Madison. Building computational tools for biomedical discovery.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&display=swap" rel="stylesheet">
 
   <style>
     /* ==========================================================================
-       1. ACADEMIC JOURNAL DESIGN SYSTEM & CSS VARIABLES
+       1. SYSTEM ARCHITECTURE & DESIGN TOKENS
        ========================================================================== */
     :root {
-      /* Colors: Paper tone palette */
-      --paper: #F8F7F0;
-      --paper-rgb: 248, 247, 240;
-      --panel: #EFECE1;
-      --panel-hover: #E7E3D5;
-      --ink: #181C16;
-      --ink-soft: #4F554A;
-      --ink-muted: #73786D;
-      --rule: #D1CDBC;
-      --rule-light: #E2DFD2;
+      /* Light Mode: Warm Editorial Paper */
+      --bg-body: #F9F8F3;
+      --bg-body-rgb: 249, 248, 243;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F2EFE8;
+      --bg-hover: #EBE7DC;
+      
+      --text-main: #161815;
+      --text-muted: #53594F;
+      --text-faint: #81877C;
+      
+      --border-strong: #161815;
+      --border-subtle: #DDD8CB;
+      --border-light: #ECE8DC;
 
-      /* Accents */
       --accent-teal: #0D7366;
-      --accent-teal-deep: #085249;
-      --accent-oxblood: #8C3B2F;
-      --scholar-blue: #1a0dab;
+      --accent-teal-glow: rgba(13, 115, 102, 0.12);
+      --accent-oxblood: #8C3227;
+      --accent-oxblood-glow: rgba(140, 50, 39, 0.12);
+      --scholar-blue: #1A0DAB;
       --scholar-green: #006621;
 
-      /* Layout & Typography */
-      --max-width: 1040px;
-      --radius-sm: 4px;
-      --radius-md: 8px;
+      --shadow-sm: 0 2px 4px rgba(22, 24, 21, 0.03);
+      --shadow-md: 0 8px 24px rgba(22, 24, 21, 0.06);
+      --shadow-lg: 0 16px 36px rgba(22, 24, 21, 0.08);
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+
       --font-display: 'Fraunces', serif;
       --font-serif: 'Source Serif 4', serif;
       --font-mono: 'IBM Plex Mono', monospace;
+
+      --transition-smooth: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     html[data-theme="dark"] {
-      --paper: #11140E;
-      --paper-rgb: 17, 20, 14;
-      --panel: #1A1E16;
-      --panel-hover: #23281E;
-      --ink: #EAE7DC;
-      --ink-soft: #A2A695;
-      --ink-muted: #73786B;
-      --rule: #323725;
-      --rule-light: #24291B;
+      /* Dark Mode: Deep Obsidian Paper */
+      --bg-body: #0E100D;
+      --bg-body-rgb: 14, 16, 13;
+      --bg-surface: #151814;
+      --bg-subtle: #1C201A;
+      --bg-hover: #252B23;
+      
+      --text-main: #EFECE6;
+      --text-muted: #A3A89C;
+      --text-faint: #6A7063;
+      
+      --border-strong: #EFECE6;
+      --border-subtle: #2D332A;
+      --border-light: #20251C;
 
       --accent-teal: #3FC4B0;
-      --accent-teal-deep: #63D9C7;
-      --accent-oxblood: #D48479;
-      --scholar-blue: #8ab4f8;
-      --scholar-green: #81c995;
+      --accent-teal-glow: rgba(63, 196, 176, 0.15);
+      --accent-oxblood: #E07D72;
+      --accent-oxblood-glow: rgba(224, 125, 114, 0.15);
+      --scholar-blue: #8AB4F8;
+      --scholar-green: #81C995;
+
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+      --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.5);
     }
 
-    /* Base Setup */
+    /* Base Reset */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
+    
     body {
-      background-color: var(--paper);
-      color: var(--ink);
+      background-color: var(--bg-body);
+      color: var(--text-main);
       font-family: var(--font-serif);
       font-size: 1rem;
       line-height: 1.65;
-      transition: background-color 0.25s ease, color 0.25s ease;
-      padding-bottom: 60px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      -webkit-font-smoothing: antialiased;
     }
 
     a { color: inherit; text-decoration: none; }
-    .wrap { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+    svg { display: block; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
     .mono { font-family: var(--font-mono); }
 
+    /* Focus accessibility */
     a:focus-visible, button:focus-visible {
       outline: 2px solid var(--accent-teal);
       outline-offset: 3px;
     }
 
-    /* Common Components */
+    /* ==========================================================================
+       2. REFINED UTILITY COMPONENTS
+       ========================================================================== */
     .eyebrow {
       font-family: var(--font-mono);
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--accent-teal-deep);
+      color: var(--accent-teal);
       font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--accent-teal);
     }
 
     .badge {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       font-family: var(--font-mono);
-      font-size: 0.7rem;
-      padding: 2px 8px;
-      border-radius: var(--radius-sm);
-      background: var(--panel);
-      border: 1px solid var(--rule);
-      color: var(--ink-soft);
+      font-size: 0.68rem;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-weight: 500;
       text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
 
     .btn {
       font-family: var(--font-mono);
       font-size: 0.75rem;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
+      padding: 10px 20px;
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition-smooth);
+      cursor: pointer;
+      border: 1px solid var(--border-strong);
+      font-weight: 600;
+      background: transparent;
+      color: var(--text-main);
+    }
+
+    .btn-primary { 
+      background: var(--text-main); 
+      color: var(--bg-body); 
+    }
+    .btn-primary:hover { 
+      background: var(--accent-teal); 
+      border-color: var(--accent-teal); 
+      color: #FFF;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-ghost { 
+      border-color: var(--border-subtle); 
+      color: var(--text-main); 
+    }
+    .btn-ghost:hover { 
+      border-color: var(--border-strong); 
+      background: var(--bg-subtle);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       3. NAVIGATION BAR
+       ========================================================================== */
+    header.masthead {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(var(--bg-body-rgb), 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .nav-brand {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.2rem;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-brand .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-teal);
+      box-shadow: 0 0 0 3px var(--accent-teal-glow);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 6px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      transition: var(--transition-smooth);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+      background: var(--bg-subtle);
+    }
+
+    .theme-toggle {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: var(--text-main);
+      transition: var(--transition-smooth);
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--border-strong);
+    }
+
+    /* ==========================================================================
+       4. HERO SECTION
+       ========================================================================== */
+    .hero {
+      padding: 64px 0 48px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .headshot-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4/5;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+      box-shadow: var(--shadow-md);
+    }
+
+    .headshot-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .headshot-frame:hover .headshot-img {
+      transform: scale(1.03);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      line-height: 1.1;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin: 10px 0 12px;
+    }
+
+    .hero-tagline {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      color: var(--accent-teal);
+      font-weight: 600;
+      margin-bottom: 14px;
+      font-style: italic;
+    }
+
+    .hero-bio {
+      color: var(--text-muted);
+      font-size: 1.02rem;
+      max-width: 640px;
+      margin-bottom: 24px;
+      line-height: 1.65;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* Quick Stats Bar */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px dashed var(--border-subtle);
+    }
+
+    .stat-card .num {
+      font-family: var(--font-mono);
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: var(--text-main);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .stat-card .label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-faint);
+    }
+
+    /* ==========================================================================
+       5. COMMON SECTION STYLES
+       ========================================================================== */
+    section {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+
+    .section-head h2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+    }
+
+    .section-head .sec-num {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent-oxblood);
+      font-weight: 600;
+    }
+
+    .section-head .rule {
+      flex: 1;
+      height: 1px;
+      background: var(--border-subtle);
+    }
+
+    /* ==========================================================================
+       6. RESEARCH INTERESTS & CURRENT PROJECTS
+       ========================================================================== */
+    .interests-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 12px;
+    }
+
+    .interest-pill {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-smooth);
+    }
+
+    .interest-pill:hover {
+      border-color: var(--accent-teal);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .current-projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .current-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-left: 3px solid var(--accent-teal);
+      padding: 20px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .current-card h4 {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .current-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       7. FEATURED WORK CARDS
+       ========================================================================== */
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 20px;
+    }
+
+    .featured-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition-smooth);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .featured-card:hover {
+      border-color: var(--accent-teal);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .featured-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin: 12px 0 8px;
+      line-height: 1.25;
+    }
+
+    .featured-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .artifact-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .artifact-btn {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      color: var(--accent-teal);
+      border: 1px solid var(--border-subtle);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      background: var(--bg-subtle);
+      transition: var(--transition-smooth);
+    }
+
+    .artifact-btn:hover {
+      background: var(--accent-teal);
+      color: #FFF;
+      border-color: var(--accent-teal);
+    }
+
+    /* ==========================================================================
+       8. TIMELINE SECTION
+       ========================================================================== */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      padding-left: 28px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 7px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: var(--border-subtle);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 32px;
+    }
+
+    .timeline-item:last-child { margin-bottom: 0; }
+
+    .timeline-dot {
+      position: absolute;
+      left: -28px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--bg-body);
+      border: 2px solid var(--accent-teal);
+      transition: var(--transition-smooth);
+    }
+
+    .timeline-item:hover .timeline-dot {
+      background: var(--accent-teal);
+      scale: 1.2;
+    }
+
+    .timeline-date {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent-oxblood);
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .timeline-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .timeline-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       9. RESEARCH LABS & PUBLICATIONS
+       ========================================================================== */
+    .lab-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-smooth);
+    }
+
+    .lab-card:hover {
+      border-color: var(--border-strong);
+    }
+
+    .lab-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .lab-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    .lab-card .meta {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-faint);
+    }
+
+    .lab-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    /* Publications List */
+    .pub-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-bottom: 12px;
+      transition: var(--transition-smooth);
+    }
+
+    .pub-card:hover {
+      border-color: var(--accent-teal);
+    }
+
+    .pub-title {
+      font-size: 1.05rem;
+      color: var(--scholar-blue);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .pub-authors {
+      font-size: 0.88rem;
+      color: var(--text-main);
+      margin-bottom: 2px;
+    }
+
+    .pub-authors .self {
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    .pub-venue {
+      font-size: 0.85rem;
+      color: var(--scholar-green);
+      font-weight: 500;
+    }
+
+    /* ==========================================================================
+       10. SKILLS GRID
+       ========================================================================== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+    }
+
+    .skill-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .skill-box h4 {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-teal);
+      margin-bottom: 12px;
+    }
+
+    .skill-box ul {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .skill-box li {
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .skill-box li::before {
+      content: "•";
+      color: var(--text-faint);
+    }
+
+    /* ==========================================================================
+       11. CONTACT & FOOTER
+       ========================================================================== */
+    .contact-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 40px 24px;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-faint);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 28px; }
+      .headshot-frame { max-width: 200px; margin: 0 auto; aspect-ratio: 1/1; }
+      .hero-bio { margin-left: auto; margin-right: auto; }
+      .cta-group { justify-content: center; }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="wrap nav-inner">
+      <a href="#" class="nav-brand">
+        <span class="status-dot"></span>Raj Patel
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="#featured">Featured</a></li>
+          <li><a href="#timeline">Timeline</a></li>
+          <li><a href="#research">Labs</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">Dark/Light</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero" id="about">
+      <div class="hero-grid">
+        <div class="headshot-frame">
+          <img src="headshot.jpg" alt="Raj Patel" class="headshot-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div style="display:none; width:100%; height:100%; align-items:center; justify-content:center; background:var(--bg-subtle); color:var(--text-faint); font-family:var(--font-mono); font-size:0.75rem; text-align:center; padding:16px;">
+            [ Professional Photo ]
+          </div>
+        </div>
+
+        <div>
+          <span class="eyebrow">UW–Madison ’30 · Molecular & Cellular Biology</span>
+          <h1 class="hero-title">Raj Patel</h1>
+          <div class="hero-tagline">Building computational tools for biomedical discovery</div>
+          <p class="hero-bio">
+            Incoming undergraduate student at the <strong>University of Wisconsin–Madison</strong>. Focused on bridging computational biology, machine learning, and wet-lab techniques to solve complex challenges in neuroscience, oncology, and surgical medicine.
+          </p>
+
+          <div class="cta-group">
+            <a href="#contact" class="btn btn-primary">Get in Touch</a>
+            <a href="https://drive.google.com/file/d/1kzynKZpoP8ODANV7VugmOHG_TSiotWo3/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-ghost">View CV</a>
+            <a href="https://github.com/rajptl14" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+          </div>
+
+          <div class="stats-bar">
+            <div class="stat-card">
+              <div class="num">4+</div>
+              <div class="label">Years Research</div>
+            </div>
+            <div class="stat-card">
+              <div class="num">4</div>
+              <div class="label">First Author Papers</div>
+            </div>
+            <div class="stat-card">
+              <div class="num">5</div>
+              <div class="label">Lab Projects</div>
+            </div>
+            <div class="stat-card">
+              <div class="num">$750+</div>
+              <div class="label">Raised (AURA)</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="interests">
+      <div class="section-head">
+        <span class="sec-num">01</span>
+        <h2>Research Interests</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="interests-grid">
+        <div class="interest-pill">🧬 Computational Biology</div>
+        <div class="interest-pill">🤖 AI in Medicine</div>
+        <div class="interest-pill">🧠 Neuroscience & Alzheimer's</div>
+        <div class="interest-pill">🦾 Surgical Robotics</div>
+        <div class="interest-pill">🔬 Biomedical Discovery</div>
+      </div>
+    </section>
+
+    <section id="featured">
+      <div class="section-head">
+        <span class="sec-num">02</span>
+        <h2>Featured Work</h2>
+        <div class="rule"></div>
+      </div>
+      
+      <div class="featured-grid">
+
+        <article class="featured-card">
+          <div>
+            <span class="badge">Stanford Collaboration</span>
+            <h3>AI Surgical Robotics</h3>
+            <p>Developing machine learning pipelines for robotic surgical video understanding, automated instrument tracking, and context reasoning.</p>
+          </div>
+          <div class="artifact-bar">
+            <a href="#" class="artifact-btn">Project Details</a>
+            <a href="https://github.com/rajptl14" target="_blank" class="artifact-btn">GitHub</a>
+          </div>
+        </article>
+
+        <article class="featured-card">
+          <div>
+            <span class="badge">CVPR 2026 Submission</span>
+            <h3>Alzheimer's Disease MRI Analysis</h3>
+            <p>Unsupervised learning workflow isolating hidden structural and functional subtypes from multimodal biological MRI datasets.</p>
+          </div>
+          <div class="artifact-bar">
+            <a href="https://drive.google.com/file/d/1g3ar25YMvLuOJoCNnqaFKBgEcfqEkeRv/view?usp=sharing" target="_blank" class="artifact-btn">Paper PDF</a>
+            <a href="#" class="artifact-btn">Poster</a>
+            <a href="#" class="artifact-btn">Code</a>
+          </div>
+        </article>
+
+        <article class="featured-card">
+          <div>
+            <span class="badge">Nonprofit Initiative</span>
+            <h3>AURA Awareness</h3>
+            <p>Cancer detection and education initiative raising community funds and expanding early health awareness outreach.</p>
+          </div>
+          <div class="artifact-bar">
+            <a href="https://aura-awareness.vercel.app/" target="_blank" class="artifact-btn">Website</a>
+            <a href="#" class="artifact-btn">Impact Report</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="current">
+      <div class="section-head">
+        <span class="sec-num">03</span>
+        <h2>Currently Working On</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="current-projects-grid">
+        <div class="current-card">
+          <h4>Robotic Surgery Foundation Models</h4>
+          <p>Processing surgical feeds and building frame-level annotation models for automated procedure analysis.</p>
+        </div>
+        <div class="current-card">
+          <h4>Alzheimer's MRI Clustering</h4>
+          <p>Evaluating multi-site structural imaging data to isolate biomarkers in sub-phenotypes.</p>
+        </div>
+        <div class="current-card">
+          <h4>AURA Awareness Expansion</h4>
+          <p>Expanding regional educational campaigns for early-stage cancer screening awareness.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline">
+      <div class="section-head">
+        <span class="sec-num">04</span>
+        <h2>Research Timeline</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2026 – 2030</div>
+          <div class="timeline-title">UW–Madison Molecular & Cellular Biology</div>
+          <div class="timeline-desc">B.S. Molecular & Cellular Biology. Focus on computational tools, genetics, and biomedical AI research.</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2026</div>
+          <div class="timeline-title">Stanford Surgical AI Collaboration</div>
+          <div class="timeline-desc">Building ML annotation and video reasoning pipelines for robotic surgical procedures.</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2025</div>
+          <div class="timeline-title">AIthena Research Group & Klein Lab</div>
+          <div class="timeline-desc">Co-founded independent research group; conducted live-cell autophagy assays at Northwestern University.</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2024</div>
+          <div class="timeline-title">UIC Cancer Research (Minshall Lab)</div>
+          <div class="timeline-desc">Investigated ion channel activators and cell junction proteins in triple-negative breast cancer models.</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2023</div>
+          <div class="timeline-title">IMSA Research Program</div>
+          <div class="timeline-desc">Began computational and laboratory STEM research at Illinois Mathematics and Science Academy.</div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="section-head">
+        <span class="sec-num">05</span>
+        <h2>Laboratory & Research Experience</h2>
+        <div class="rule"></div>
+      </div>
+
+      <div class="lab-card">
+        <div class="lab-header">
+          <h3>Surgical Robotics AI Collaboration · Stanford University</h3>
+          <span class="meta">2026 – PRESENT</span>
+        </div>
+        <p><strong>Project:</strong> Video Reasoning for Robotic Surgery</p>
+        <p style="margin-top:4px;"><strong>Role:</strong> Student Collaborator — Annotating surgical videos, developing frame-level ML classification tools, and analyzing instrument movement patterns.</p>
+      </div>
+
+      <div class="lab-card">
+        <div class="lab-header">
+          <h3>Klein Lab · Northwestern University</h3>
+          <span class="meta">2024 – 2025</span>
+        </div>
+        <p><strong>Project:</strong> Live-Cell Screening of NU-9 Derivatives in Alzheimer's Models</p>
+        <p style="margin-top:4px;"><strong>Role:</strong> Lead Student Researcher — Used fluorescence microscopy and quantitative assays to evaluate neuroprotective molecules against toxic protein assemblies.</p>
+      </div>
+
+      <div class="lab-card">
+        <div class="lab-header">
+          <h3>Minshall Lab · University of Illinois Chicago</h3>
+          <span class="meta">2023 – 2024</span>
+        </div>
+        <p><strong>Project:</strong> Ion Channel Modulation of Desmosomal Proteins in Cancer</p>
+        <p style="margin-top:4px;"><strong>Role:</strong> Research Assistant — Evaluated Desmoplakin and Plakophilin expression using TEER and protein quantification assays.</p>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="section-head">
+        <span class="sec-num">06</span>
+        <h2>Publications & Proceedings</h2>
+        <div class="rule"></div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title">Multimodal Discovery of Hidden Alzheimer's Disease Subtypes from MRI Data</div>
+        <div class="pub-authors"><span class="self">Patel, R.</span>, et al.</div>
+        <div class="pub-venue">CVPR 2026 Submission</div>
+        <div class="artifact-bar" style="margin-top: 10px; padding-top: 10px;">
+          <a href="https://drive.google.com/file/d/1g3ar25YMvLuOJoCNnqaFKBgEcfqEkeRv/view?usp=sharing" target="_blank" class="artifact-btn">PDF Paper</a>
+        </div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title">Live-Cell Screening of Novel Autophagy-Enhancing Derivatives of NU-9 in Alzheimer's Disease</div>
+        <div class="pub-authors"><span class="self">Patel, R.</span>, Norwar, R., Klein, W.L.</div>
+        <div class="pub-venue">IMSAloquium Oral Proceedings, 2025</div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title">Assessing Page Length in Correspondence to Detection False Positives</div>
+        <div class="pub-authors"><span class="self">Patel, R.</span></div>
+        <div class="pub-venue">ISAAPT Conference, 2024</div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-head">
+        <span class="sec-num">07</span>
+        <h2>Technical Skills</h2>
+        <div class="rule"></div>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-box">
+          <h4>Wet Lab Assays</h4>
+          <ul>
+            <li>Cell Passaging & Culture</li>
+            <li>Fluorescence Microscopy</li>
+            <li>TEER Electrical Assays</li>
+            <li>Bradford Protein Assays</li>
+          </ul>
+        </div>
+
+        <div class="skill-box">
+          <h4>Computational & ML</h4>
+          <ul>
+            <li>Python (PyTorch, Scikit-Learn)</li>
+            <li>Structural MRI Processing</li>
+            <li>Computer Vision Pipelines</li>
+            <li>Data Visualization & R</li>
+          </ul>
+        </div>
+
+        <div class="skill-box">
+          <h4>Scientific Writing</h4>
+          <ul>
+            <li>Manuscript Writing</li>
+            <li>LaTeX Preparation</li>
+            <li>Conference Talks</li>
+            <li>Data Presentation</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" style="border-bottom:none;">
+      <div class="contact-card">
+        <span class="eyebrow">Academic Contact</span>
+        <h2 style="font-family: var(--font-display); font-size: 1.8rem; margin: 8px 0 12px; font-weight: 500;">Get in Touch</h2>
+        <p style="color: var(--text-muted); margin-bottom: 24px;">Open to research inquiries, academic collaborations, and computational biology discussions.</p>
+        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+          <a href="mailto:rhpatel6@wisc.edu" class="btn btn-primary">rhpatel6@wisc.edu</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>© 2026 Raj Patel · Department of Molecular & Cellular Biology · UW–Madison</p>
+    </div>
+  </footer>
+
+  <script>
+    // Theme Toggle Functionality
+    const toggleBtn = document.getElementById('themeToggle');
+    const root = document.documentElement;
+
+    toggleBtn.addEventListener('click', () => {
+      const current = root.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+    });
+  </script>
+</body>
+</html>
