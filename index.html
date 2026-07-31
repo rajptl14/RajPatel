@@ -1,699 +1,679 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Raj Patel — Molecular & Cellular Biology</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --paper:#F3F1E5;
-    --paper-rgb:243,241,229;
-    --panel:#EAE7D6;
-    --ink:#161B13;
-    --ink-soft:#4B5145;
-    --rule:#CBC7AF;
-    --teal:#0E7C6E;
-    --teal-deep:#0A5C52;
-    --oxblood:#8A3A2E;
-    --amber:#B9862D;
-    --max:980px;
-  }
-  html[data-theme="dark"]{
-    --paper:#12150E;
-    --paper-rgb:18,21,14;
-    --panel:#1A1E13;
-    --ink:#EAE7D6;
-    --ink-soft:#A3A68F;
-    --rule:#31351F;
-    --teal:#42C9B4;
-    --teal-deep:#66DBC8;
-    --oxblood:#D0857A;
-    --amber:#E0AC5A;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:
-      linear-gradient(var(--paper), var(--paper)),
-      repeating-linear-gradient(0deg, rgba(120,120,90,0.055) 0, rgba(120,120,90,0.055) 1px, transparent 1px, transparent 34px),
-      repeating-linear-gradient(90deg, rgba(120,120,90,0.055) 0, rgba(120,120,90,0.055) 1px, transparent 1px, transparent 34px);
-    color:var(--ink);
-    font-family:'Source Serif 4', serif;
-    font-size:16.5px;
-    line-height:1.65;
-    transition:background-color .3s ease, color .3s ease;
-  }
-  a{color:inherit;}
-  svg{display:block;}
-  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
-  .mono{font-family:'IBM Plex Mono', monospace;}
-  .eyebrow{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:11.5px;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--teal-deep);
-  }
-  .kicker{
-    display:inline-flex; align-items:center; gap:8px;
-    font-family:'IBM Plex Mono', monospace; font-size:11px;
-    letter-spacing:0.1em; text-transform:uppercase;
-    color:var(--ink-soft);
-  }
-  .kicker::before{
-    content:""; width:5px; height:5px; border-radius:50%;
-    background:var(--oxblood); display:inline-block;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Raj Patel — Molecular & Cellular Biology Research Portfolio">
+  <title>Raj Patel — Research Portfolio</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 
-  /* running head / masthead */
-  header.masthead{
-    position:sticky; top:0; z-index:50;
-    background:rgba(var(--paper-rgb),0.94);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--ink);
-    transition:background-color .3s ease, border-color .3s ease;
-  }
-  .masthead-top{
-    border-bottom:1px solid var(--rule);
-  }
-  .masthead-top-inner{
-    max-width:var(--max); margin:0 auto; padding:8px 32px;
-    display:flex; justify-content:space-between; align-items:center;
-    font-family:'IBM Plex Mono', monospace; font-size:10.5px;
-    letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft);
-  }
-  .nav-inner{
-    max-width:var(--max); margin:0 auto; padding:14px 32px;
-    display:flex; align-items:center; justify-content:space-between;
-    position:relative;
-  }
-  .nav-mark{
-    font-family:'Fraunces', serif; font-weight:600; font-style:italic; font-size:18px;
-    display:flex; align-items:center; gap:8px;
-  }
-  .nav-mark .dot{width:7px; height:7px; border-radius:50%; background:var(--teal); flex-shrink:0;}
-  .nav-links{display:flex; gap:2px; list-style:none; align-items:center;}
-  .nav-links a{
-    font-family:'IBM Plex Mono', monospace; font-size:11.5px;
-    letter-spacing:0.05em; text-transform:uppercase;
-    text-decoration:none; color:var(--ink-soft);
-    transition:color .2s ease;
-    padding:6px 12px;
-    border-left:1px solid var(--rule);
-  }
-  .nav-links li:first-child a{border-left:none;}
-  .nav-links a:hover, .nav-links a:focus-visible{color:var(--teal-deep);}
-  .nav-right{display:flex; align-items:center; gap:14px;}
-  .theme-toggle{
-    display:flex; align-items:center; justify-content:center;
-    width:30px; height:30px; border-radius:2px;
-    border:1px solid var(--rule); background:var(--panel);
-    cursor:pointer; transition:all .2s ease; flex-shrink:0;
-  }
-  .theme-toggle:hover, .theme-toggle:focus-visible{border-color:var(--teal);}
-  .theme-toggle svg{width:15px; height:15px; stroke:var(--ink); transition:transform .4s ease;}
-  html[data-theme="dark"] .theme-toggle svg{transform:rotate(180deg);}
+  <style>
+    /* ==========================================================================
+       1. DESIGN SYSTEM & CSS VARIABLES
+       ========================================================================== */
+    :root {
+      /* Colors */
+      --paper: #F8F7F0;
+      --paper-rgb: 248, 247, 240;
+      --panel: #EFECE1;
+      --ink: #181C16;
+      --ink-soft: #4F554A;
+      --rule: #D1CDBC;
+      --accent-teal: #0D7366;
+      --accent-teal-deep: #085249;
+      --accent-oxblood: #8C3B2F;
+      --accent-amber: #B8852D;
+      --scholar-blue: #1a0dab;
+      --scholar-green: #006621;
 
-  .nav-toggle{
-    display:none; align-items:center; justify-content:center;
-    width:30px; height:30px; border-radius:2px;
-    border:1px solid var(--rule); background:var(--panel);
-    cursor:pointer; flex-shrink:0; position:relative;
-  }
-  .nav-toggle .bars{width:15px; height:10px; position:relative;}
-  .nav-toggle .bars span{
-    position:absolute; left:0; width:100%; height:1.4px; background:var(--ink);
-    transition:all .25s ease;
-  }
-  .nav-toggle .bars span:nth-child(1){top:0;}
-  .nav-toggle .bars span:nth-child(2){top:4.3px;}
-  .nav-toggle .bars span:nth-child(3){top:8.6px;}
-  .nav-toggle.open .bars span:nth-child(1){transform:translateY(4.3px) rotate(45deg);}
-  .nav-toggle.open .bars span:nth-child(2){opacity:0;}
-  .nav-toggle.open .bars span:nth-child(3){transform:translateY(-4.3px) rotate(-45deg);}
-
-  a:focus-visible, button:focus-visible{outline:2px solid var(--teal); outline-offset:2px;}
-
-  /* ARTICLE HEADER */
-  .article-header{
-    padding:56px 0 48px;
-    border-bottom:1px solid var(--ink);
-    position:relative;
-    overflow:hidden;
-  }
-  .header-grid{
-    display:grid; grid-template-columns: 1.4fr 1fr; gap:48px; align-items:start;
-    position:relative; z-index:1;
-  }
-  .specimen-diagram{
-    position:absolute; right:32px; top:14px; width:150px; height:150px;
-    opacity:0.9; pointer-events:none;
-  }
-  .specimen-diagram svg{width:100%; height:100%;}
-  .title-block{max-width:520px;}
-  h1.paper-title{
-    font-family:'Fraunces', serif; font-weight:500;
-    font-size:clamp(36px, 5.4vw, 58px);
-    line-height:1.06;
-    letter-spacing:-0.01em;
-    margin-top:18px;
-  }
-  h1.paper-title em{font-style:italic; color:var(--teal-deep); font-weight:500;}
-  .byline{
-    margin-top:20px; font-size:15px; color:var(--ink-soft);
-    display:flex; flex-wrap:wrap; gap:6px 4px; align-items:baseline;
-  }
-  .byline sup{font-size:10px; color:var(--oxblood); margin-left:1px;}
-  .affil{
-    margin-top:6px; font-family:'IBM Plex Mono', monospace; font-size:11px;
-    color:var(--ink-soft); display:flex; flex-wrap:wrap; gap:2px 16px;
-  }
-  .affil sup{color:var(--oxblood); margin-right:2px;}
-
-  .abstract-row--single{max-width:440px; padding-top:2px;}
-  .abstract-box{
-    border-top:2px solid var(--ink); border-bottom:1px solid var(--rule);
-    padding:20px 0;
-  }
-  .abstract-box .eyebrow{margin-bottom:10px;}
-  .abstract-box p{font-size:15.5px; text-align:justify; color:var(--ink-soft);}
-  .abstract-box p + p{margin-top:10px;}
-  .keywords{
-    margin-top:14px; font-size:13px; color:var(--ink-soft);
-    font-family:'IBM Plex Mono', monospace; font-size:11.5px;
-  }
-  .keywords b{color:var(--ink); font-weight:600;}
-  .keywords .kw{text-decoration:underline; text-decoration-color:var(--rule); text-underline-offset:3px;}
-  .keywords .kw:not(:last-child)::after{content:","; text-decoration:none;}
-
-  .correspond{
-    margin-top:14px; font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-soft);
-  }
-  .correspond a{color:var(--teal-deep); text-decoration:none; border-bottom:1px solid var(--teal);}
-
-  .doc-cta{display:flex; gap:10px; margin-top:22px; flex-wrap:wrap;}
-  .btn{
-    font-family:'IBM Plex Mono', monospace; font-size:11.5px;
-    letter-spacing:0.04em; text-transform:uppercase;
-    padding:9px 16px; text-decoration:none;
-    display:inline-flex; align-items:center; gap:6px;
-    transition:all .2s ease;
-    border:1px solid var(--ink);
-  }
-  .btn.primary{background:var(--ink); color:var(--paper);}
-  .btn.primary:hover, .btn.primary:focus-visible{background:var(--teal-deep); border-color:var(--teal-deep);}
-  .btn.ghost{border-color:var(--rule); color:var(--ink);}
-  .btn.ghost:hover, .btn.ghost:focus-visible{border-color:var(--ink);}
-
-  /* SECTIONS */
-  section{padding:56px 0; border-bottom:1px solid var(--rule);}
-  .section-head{
-    display:flex; align-items:baseline; gap:14px; margin-bottom:30px;
-  }
-  .section-head .num{
-    font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--oxblood);
-  }
-  .section-head h2{
-    font-family:'Fraunces', serif; font-weight:500;
-    text-transform:uppercase; letter-spacing:0.02em; font-size:20px;
-  }
-  .section-head .rule{flex:1; height:1px; background:var(--rule);}
-
-  .col-2{display:grid; grid-template-columns: 1fr 1fr; gap:52px;}
-  .prose p{margin-bottom:14px; text-align:justify; color:var(--ink-soft); font-size:15.5px;}
-  .prose p:first-child::first-letter{
-    font-family:'Fraunces', serif; font-weight:500; font-size:52px; line-height:0.78;
-    float:left; padding:6px 8px 0 0; color:var(--ink);
-  }
-  .toolkit-row{margin-top:18px;}
-  .toolkit-row .eyebrow{margin-bottom:10px;}
-
-  .fact-list{list-style:none; display:flex; flex-direction:column;}
-  .fact-list li{
-    display:flex; justify-content:space-between; gap:12px; align-items:baseline;
-    font-size:14px; padding:10px 0; border-bottom:1px solid var(--rule);
-  }
-  .fact-list li b{font-weight:600;}
-  .fact-list li span.code{
-    font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink-soft); white-space:nowrap;
-  }
-  .fact-note{margin-top:10px; font-size:14px; color:var(--ink-soft); text-align:justify;}
-
-  /* numbered entries (research / outreach) */
-  .entries{list-style:none; counter-reset:entry;}
-  .entry{
-    position:relative; padding:22px 0 22px 46px;
-    border-top:1px solid var(--rule);
-  }
-  .entry:first-child{border-top:none;}
-  .entry::before{
-    counter-increment:entry;
-    content:"[" counter(entry) "]";
-    position:absolute; left:0; top:22px;
-    font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--oxblood);
-  }
-  .entry-meta{
-    font-family:'IBM Plex Mono', monospace; font-size:11px;
-    color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.06em;
-    margin-bottom:6px;
-  }
-  .entry h3{font-family:'Source Serif 4', serif; font-weight:600; font-size:16px; margin-bottom:6px;}
-  .entry p{color:var(--ink-soft); font-size:15px; max-width:660px; text-align:justify;}
-  .role-note{
-    margin-top:12px; max-width:660px;
-    border:1px solid var(--rule); border-left:2px solid var(--amber);
-    background:var(--panel);
-    padding:10px 14px;
-    font-size:13.5px; color:var(--ink-soft); text-align:justify;
-  }
-  .role-note b{
-    display:inline-block; font-family:'IBM Plex Mono', monospace;
-    font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase;
-    color:var(--amber); margin-right:6px; font-weight:600;
-  }
-  .pub-link{
-    display:inline-flex; align-items:center; gap:6px;
-    font-family:'IBM Plex Mono', monospace; font-size:11.5px;
-    color:var(--teal-deep); text-decoration:none; margin-top:10px;
-    border-bottom:1px solid var(--teal); padding-bottom:1px; width:fit-content;
-  }
-  .pub-link:hover, .pub-link:focus-visible{color:var(--oxblood); border-color:var(--oxblood);}
-
-  /* Publications as reference list */
-  .ref-list{list-style:none; counter-reset:ref;}
-  .ref{
-    position:relative; padding:16px 0 16px 42px;
-    border-top:1px solid var(--rule);
-    font-size:15px;
-  }
-  .ref:first-child{border-top:none;}
-  .ref::before{
-    counter-increment:ref;
-    content:"[" counter(ref) "]";
-    position:absolute; left:0; top:16px;
-    font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--oxblood);
-  }
-  .ref .cite-title{font-weight:600;}
-  .ref .cite-venue{color:var(--ink-soft); font-style:italic;}
-  .ref .cite-desc{margin-top:6px; color:var(--ink-soft); font-size:14px; text-align:justify;}
-  .ref .pub-link{margin-top:8px;}
-
-  /* SKILLS as apparatus/methods table */
-  .skill-groups{display:grid; grid-template-columns:repeat(2,1fr); gap:0;}
-  .skill-group{
-    padding:20px 24px; border:1px solid var(--rule); margin:-1px 0 0 -1px;
-  }
-  .skill-group h4{
-    font-family:'IBM Plex Mono', monospace; font-size:11px;
-    text-transform:uppercase; letter-spacing:0.08em; color:var(--teal-deep);
-    margin-bottom:14px;
-  }
-  .pill-row{display:flex; flex-wrap:wrap; gap:7px;}
-  .pill{
-    font-size:12.5px; padding:5px 11px;
-    border:1px solid var(--rule); background:var(--panel);
-    font-family:'IBM Plex Mono', monospace;
-    transition:all .2s ease; cursor:default;
-  }
-  .pill:hover{border-color:var(--teal); color:var(--teal-deep);}
-
-  /* CORRESPONDENCE (contact) */
-  .contact-inner{display:flex; flex-direction:column; gap:26px;}
-  .contact-inner h2.big{
-    font-family:'Fraunces', serif; font-weight:500; font-size:30px; max-width:600px;
-  }
-  .contact-links{display:flex; flex-wrap:wrap; gap:10px;}
-  .contact-links a{
-    display:inline-flex; align-items:center; gap:9px;
-    font-family:'IBM Plex Mono', monospace; font-size:12.5px;
-    text-decoration:none; color:var(--ink);
-    border:1px solid var(--rule);
-    padding:9px 15px; transition:all .2s ease;
-    background:var(--panel);
-  }
-  .contact-links a svg{width:14px; height:14px; stroke:var(--ink); flex-shrink:0;}
-  .contact-links a:hover, .contact-links a:focus-visible{border-color:var(--teal); color:var(--teal-deep);}
-  .contact-links a:hover svg, .contact-links a:focus-visible svg{stroke:var(--teal-deep);}
-
-  footer{padding:24px 0 40px; text-align:center;}
-  footer p{
-    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-soft);
-    letter-spacing:0.05em;
-  }
-
-  .reveal{opacity:0; transform:translateY(14px); transition:opacity .55s ease, transform .55s ease;}
-  .reveal.show{opacity:1; transform:translateY(0);}
-
-  @media (prefers-reduced-motion: reduce){
-    .reveal{opacity:1; transform:none; transition:none;}
-    html{scroll-behavior:auto;}
-  }
-
-  @media (max-width: 860px){
-    .header-grid{grid-template-columns:1fr; gap:32px;}
-    .title-block{max-width:none;}
-    .abstract-row--single{max-width:none;}
-    .col-2{grid-template-columns:1fr;}
-    .skill-groups{grid-template-columns:1fr;}
-    .masthead-top{display:none;}
-    .specimen-diagram{opacity:0.35; width:110px; height:110px; top:6px; right:16px;}
-    .nav-links{
-      display:none;
-      position:absolute; top:100%; left:0; right:0;
-      flex-direction:column; gap:0;
-      background:var(--paper);
-      border-bottom:1px solid var(--ink);
-      padding:6px 32px 18px;
+      /* Layout */
+      --max-width: 1080px;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      
+      /* Typography */
+      --font-serif-head: 'Fraunces', serif;
+      --font-serif-body: 'Source Serif 4', serif;
+      --font-mono: 'IBM Plex Mono', monospace;
     }
-    .nav-links.open{display:flex;}
-    .nav-links a{padding:12px 0; border-left:none; border-bottom:1px solid var(--rule); width:100%;}
-    .nav-toggle{display:flex;}
-  }
-</style>
+
+    html[data-theme="dark"] {
+      --paper: #11140E;
+      --paper-rgb: 17, 20, 14;
+      --panel: #1A1E16;
+      --ink: #EAE7DC;
+      --ink-soft: #A2A695;
+      --rule: #323725;
+      --accent-teal: #3FC4B0;
+      --accent-teal-deep: #63D9C7;
+      --accent-oxblood: #D48479;
+      --accent-amber: #E2AD5B;
+      --scholar-blue: #8ab4f8;
+      --scholar-green: #81c995;
+    }
+
+    /* Base Reset */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    
+    body {
+      background-color: var(--paper);
+      color: var(--ink);
+      font-family: var(--font-serif-body);
+      font-size: 1rem;
+      line-height: 1.65;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    svg { display: block; }
+    .wrap { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+    .mono { font-family: var(--font-mono); }
+
+    /* Accessibility */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;
+    }
+    
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--accent-teal);
+      outline-offset: 3px;
+    }
+
+    /* Component Utilities */
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-teal-deep);
+      font-weight: 600;
+    }
+
+    .badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+      background: var(--panel);
+      border: 1px solid var(--rule);
+      color: var(--ink-soft);
+      text-transform: uppercase;
+    }
+
+    .btn {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: 1px solid var(--ink);
+      font-weight: 500;
+    }
+
+    .btn-primary { background: var(--ink); color: var(--paper); }
+    .btn-primary:hover { background: var(--accent-teal-deep); border-color: var(--accent-teal-deep); color: #fff; }
+    .btn-ghost { background: transparent; border-color: var(--rule); color: var(--ink); }
+    .btn-ghost:hover { border-color: var(--ink); }
+
+    /* ==========================================================================
+       2. HEADER & NAVIGATION
+       ========================================================================== */
+    header.masthead {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(var(--paper-rgb), 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-brand {
+      font-family: var(--font-serif-head);
+      font-weight: 600;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-brand .dot {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--accent-teal);
+    }
+
+    .nav-links {
+      display: flex; gap: 20px; list-style: none; align-items: center;
+    }
+
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ink-soft);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent-teal); }
+
+    .theme-toggle {
+      background: var(--panel);
+      border: 1px solid var(--rule);
+      width: 36px; height: 36px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--ink);
+    }
+
+    /* ==========================================================================
+       3. HERO SECTION & HEADSHOT
+       ========================================================================== */
+    .hero {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .headshot-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1/1;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 2px solid var(--ink);
+      box-shadow: 6px 6px 0px var(--rule);
+      background: var(--panel);
+    }
+
+    .headshot-img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: grayscale(15%);
+      transition: filter 0.3s ease;
+    }
+
+    .headshot-wrapper:hover .headshot-img { filter: grayscale(0%); }
+
+    .hero-title {
+      font-family: var(--font-serif-head);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      line-height: 1.1;
+      margin: 12px 0 16px;
+    }
+
+    .hero-bio {
+      color: var(--ink-soft);
+      font-size: 1.05rem;
+      max-width: 620px;
+      margin-bottom: 24px;
+    }
+
+    /* Stats Bar */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px dashed var(--rule);
+    }
+
+    .stat-item .num {
+      font-family: var(--font-mono);
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--accent-teal);
+    }
+
+    .stat-item .label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    /* ==========================================================================
+       4. SECTIONS COMMON
+       ========================================================================== */
+    section { padding: 64px 0; border-bottom: 1px solid var(--rule); }
+    
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .section-head h2 {
+      font-family: var(--font-serif-head);
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .section-head .rule { flex: 1; height: 1px; background: var(--rule); }
+
+    /* ==========================================================================
+       5. FEATURED RESEARCH CARDS
+       ========================================================================== */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .research-card {
+      background: var(--panel);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .research-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent-teal);
+    }
+
+    .research-card h3 {
+      font-family: var(--font-serif-body);
+      font-size: 1.15rem;
+      margin: 12px 0 8px;
+    }
+
+    .research-card p {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      margin-bottom: 16px;
+    }
+
+    /* ==========================================================================
+       6. TIMELINE SECTION
+       ========================================================================== */
+    .timeline {
+      position: relative;
+      padding-left: 20px;
+      border-left: 2px solid var(--rule);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 32px;
+    }
+
+    .timeline-item:last-child { margin-bottom: 0; }
+
+    .timeline-dot {
+      position: absolute;
+      left: -27px;
+      top: 4px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent-teal);
+      border: 2px solid var(--paper);
+    }
+
+    .timeline-date {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent-oxblood);
+      margin-bottom: 4px;
+    }
+
+    .timeline-title { font-weight: 600; font-size: 1.05rem; }
+    .timeline-desc { font-size: 0.9rem; color: var(--ink-soft); }
+
+    /* ==========================================================================
+       7. GOOGLE SCHOLAR STYLED PUBLICATIONS
+       ========================================================================== */
+    .scholar-list { display: flex; flex-direction: column; gap: 20px; }
+
+    .scholar-item {
+      padding-bottom: 20px;
+      border-bottom: 1px dotted var(--rule);
+    }
+
+    .scholar-title {
+      font-size: 1.05rem;
+      color: var(--scholar-blue);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .scholar-authors {
+      font-size: 0.85rem;
+      color: var(--ink);
+      margin-top: 2px;
+    }
+
+    .scholar-authors .self { font-weight: 600; }
+
+    .scholar-venue {
+      font-size: 0.85rem;
+      color: var(--scholar-green);
+    }
+
+    .scholar-meta {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--ink-soft);
+      margin-top: 6px;
+      display: flex;
+      gap: 16px;
+    }
+
+    /* ==========================================================================
+       8. NEWS & CONTACT
+       ========================================================================== */
+    .news-list { list-style: none; }
+    .news-item {
+      display: flex;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.9rem;
+    }
+
+    .news-date {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent-teal-deep);
+      white-space: nowrap;
+    }
+
+    .contact-box {
+      background: var(--panel);
+      padding: 32px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--rule);
+      text-align: center;
+    }
+
+    /* Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 24px; text-align: center; }
+      .headshot-wrapper { max-width: 180px; margin: 0 auto; }
+      .stats-grid { grid-template-columns: 1fr; gap: 12px; }
+      .hero-bio { margin-left: auto; margin-right: auto; }
+      .nav-links { display: none; } /* Simplified for code size */
+    }
+  </style>
 </head>
 <body>
 
-<header class="masthead">
-  <div class="masthead-top">
-    <div class="masthead-top-inner">
-      <span>Curriculum Vitae · Open Record</span>
-      <span>Updated Jul 2026</span>
-    </div>
-  </div>
-  <div class="nav-inner">
-    <div class="nav-mark"><span class="dot"></span>Raj Patel</div>
-    <div class="nav-right">
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#about">01 About</a></li>
-        <li><a href="#research">02 Research</a></li>
-        <li><a href="#experience">03 Outreach</a></li>
-        <li><a href="#publications">04 Publications</a></li>
-        <li><a href="#skills">05 Skills</a></li>
-        <li><a href="#contact">06 Correspondence</a></li>
-      </ul>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode" title="Toggle light/dark mode">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="4.2"></circle>
-          <line x1="12" y1="2.5" x2="12" y2="4.8"></line>
-          <line x1="12" y1="19.2" x2="12" y2="21.5"></line>
-          <line x1="4.2" y1="4.2" x2="5.9" y2="5.9"></line>
-          <line x1="18.1" y1="18.1" x2="19.8" y2="19.8"></line>
-          <line x1="2.5" y1="12" x2="4.8" y2="12"></line>
-          <line x1="19.2" y1="12" x2="21.5" y2="12"></line>
-          <line x1="4.2" y1="19.8" x2="5.9" y2="18.1"></line>
-          <line x1="18.1" y1="5.9" x2="19.8" y2="4.2"></line>
+  <header class="masthead">
+    <div class="wrap nav-inner">
+      <a href="#" class="nav-brand"><span class="dot"></span>Raj Patel</a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#timeline">Timeline</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"></circle>
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
         </svg>
       </button>
-      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
-        <span class="bars"><span></span><span></span><span></span></span>
-      </button>
     </div>
-  </div>
-</header>
+  </header>
 
-<section class="article-header">
-  <div class="specimen-diagram" aria-hidden="true">
-    <svg viewBox="0 0 160 160" fill="none">
-      <circle cx="80" cy="80" r="58" stroke="var(--teal)" stroke-width="1.1" stroke-dasharray="2 4"/>
-      <ellipse cx="80" cy="80" rx="30" ry="20" stroke="var(--ink)" stroke-width="1.3" transform="rotate(-18 80 80)"/>
-      <circle cx="72" cy="76" r="8" stroke="var(--oxblood)" stroke-width="1.2"/>
-      <circle cx="98" cy="90" r="4" stroke="var(--teal-deep)" stroke-width="1.1"/>
-      <circle cx="60" cy="96" r="3" stroke="var(--teal-deep)" stroke-width="1.1"/>
-      <path d="M110 60 Q120 80 108 104" stroke="var(--ink)" stroke-width="0.9" fill="none"/>
-      <path d="M46 100 Q40 78 54 58" stroke="var(--ink)" stroke-width="0.9" fill="none"/>
-    </svg>
-  </div>
-  <div class="wrap header-grid">
-    <div class="title-block">
-      <span class="eyebrow">Molecular & Cellular Biology — Personal Record</span>
-      <h1 class="paper-title">Studying life at the <em>cellular</em> scale</h1>
-      <div class="byline">Raj Patel<sup>1</sup> — incoming first-year, Molecular &amp; Cellular Biology</div>
-      <div class="affil"><span><sup>1</sup>Illinois Mathematics and Science Academy, Class of 2026 → University of Wisconsin–Madison, Class of 2030</span></div>
-    </div>
+  <main class="wrap">
+    
+    <section class="hero" id="about">
+      <div class="hero-grid">
+        <div class="headshot-wrapper">
+          <svg class="headshot-img" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" fill="var(--rule)"/>
+            <circle cx="50" cy="40" r="20" fill="var(--ink-soft)"/>
+            <path d="M20 90C20 70 35 65 50 65C65 65 80 70 80 90" fill="var(--ink-soft)"/>
+          </svg>
+        </div>
+        <div>
+          <span class="eyebrow">Incoming MCB Student · UW–Madison</span>
+          <h1 class="hero-title">Investigating biological systems at the cellular scale.</h1>
+          <p class="hero-bio">
+            Exploring the intersection of computational biology, biomedical research, and AI applications. Currently focusing on surgical robotics understanding, neurodegenerative mechanisms, and live-cell assays.
+          </p>
+          <div class="doc-cta">
+            <a href="#contact" class="btn btn-primary">Contact Me</a>
+            <a href="https://github.com/rajptl14" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+          </div>
 
-    <div class="abstract-row abstract-row--single reveal">
-      <div class="abstract-box">
-        <div class="eyebrow">Abstract</div>
-        <p>Incoming Molecular & Cellular Biology student at the University of Wisconsin–Madison exploring the intersection of computational biology, biomedical research, and AI-driven healthcare. Currently contributing to research in surgical robotics, Alzheimer’s disease, and machine learning applications while developing skills in wet lab experimentation, data analysis, and scientific communication.</p>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="num" data-target="4">0</div>
+              <div class="label">First Author Papers</div>
+            </div>
+            <div class="stat-item">
+              <div class="num" data-target="3">0</div>
+              <div class="label">Research Labs</div>
+            </div>
+            <div class="stat-item">
+              <div class="num" data-target="750">0</div>
+              <div class="label">Dollars Raised (AURA)</div>
+            </div>
+          </div>
+
+        </div>
       </div>
-      <div class="keywords"><b>Keywords —</b> <span class="kw">Computational Biology</span> <span class="kw">MRI Data Analysis</span> <span class="kw">Science Communication</span> <span class="kw">Wet Lab Research</span></div>
-      <div class="correspond" style="margin-top:14px;">*Correspondence: <a href="mailto:rhpatel6@wisc.edu">rhpatel6@wisc.edu</a></div>
-      <div class="doc-cta">
-        <a class="btn primary" href="#contact">Get in touch</a>
-        <a class="btn ghost" href="https://drive.google.com/file/d/1kzynKZpoP8ODANV7VugmOHG_TSiotWo3/view?usp=sharing" target="_blank" rel="noopener">View CV</a>
-        <a class="btn ghost" href="https://github.com/rajptl14" target="_blank" rel="noopener">GitHub</a>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section id="about">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="num">01</span><h2>About</h2><div class="rule"></div>
-    </div>
-    <div class="col-2">
-      <div class="prose reveal">
-        <p>I'm an incoming first-year at the University of Wisconsin–Madison, studying Molecular &amp; Cellular Biology. I'm interested in learning about research, computational biology, and science communication — specifically how these fields can intersect to advance the human condition.</p>
-        <p>I'd love to connect — feel free to reach out at <a href="mailto:rhpatel6@wisc.edu" style="border-bottom:1px solid var(--rule);">rhpatel6@wisc.edu</a>.</p>
-        <div class="toolkit-row">
-          <div class="eyebrow">Toolkit</div>
-          <div class="pill-row">
-            <span class="pill">Python</span>
-            <span class="pill">Wet Lab Research</span>
-            <span class="pill">Web Development</span>
-            <span class="pill">Data Analysis</span>
+    <section id="research">
+      <div class="section-head">
+        <h2>Featured Research</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="card-grid">
+        
+        <article class="research-card reveal">
+          <div>
+            <span class="badge">Computational Biology</span>
+            <h3>AI Surgical Robotics</h3>
+            <p>Collaborating on machine learning pipelines for surgical video processing, frame annotation, and computational reasoning.</p>
+          </div>
+          <span class="eyebrow">Stanford Collaboration</span>
+        </article>
+
+        <article class="research-card reveal">
+          <div>
+            <span class="badge">Neuroscience</span>
+            <h3>Alzheimer's Subtyping</h3>
+            <p>Unsupervised ML workflow isolating hidden functional subtypes from multimodal MRI structural data.</p>
+          </div>
+          <span class="eyebrow">CVPR 2026 Submission</span>
+        </article>
+
+        <article class="research-card reveal">
+          <div>
+            <span class="badge">Wet Lab</span>
+            <h3>Autophagy Enhancement</h3>
+            <p>Live-cell quantitative screening evaluating novel NU-9 derivatives to target neurodegenerative pathways.</p>
+          </div>
+          <span class="eyebrow">Klein Lab (Northwestern)</span>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="timeline">
+      <div class="section-head">
+        <h2>Experience & Education</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="timeline reveal">
+        
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2026 – 2030</div>
+          <div class="timeline-title">B.S. Molecular & Cellular Biology</div>
+          <div class="timeline-desc">University of Wisconsin–Madison</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2024 – PRESENT</div>
+          <div class="timeline-title">Co-Founder & AI Researcher</div>
+          <div class="timeline-desc">AIthena Research Group — Independent machine learning & computational neuroscience collective.</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2023 – 2026</div>
+          <div class="timeline-title">High School Diploma (STEM Track)</div>
+          <div class="timeline-desc">Illinois Mathematics and Science Academy (IMSA)</div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="section-head">
+        <h2>Publications</h2>
+        <div class="rule"></div>
+      </div>
+      
+      <div class="scholar-list">
+        
+        <div class="scholar-item reveal">
+          <a href="#" class="scholar-title">Multimodal Discovery of Hidden Alzheimer's Disease Subtypes from MRI Data</a>
+          <div class="scholar-authors"><span class="self">R Patel</span>, A Researcher, B Scientist</div>
+          <div class="scholar-venue">Computer Vision and Pattern Recognition (CVPR), 2026</div>
+          <div class="scholar-meta">
+            <span>Cited by 0</span> — <span>Related articles</span> — <span>PDF</span>
           </div>
         </div>
-      </div>
-      <div class="reveal">
-        <div class="eyebrow" style="margin-bottom:12px;">Education</div>
-        <ul class="fact-list" style="margin-bottom:20px;">
-          <li><b>University of Wisconsin–Madison</b><span class="code">2026 – 2030</span></li>
-        </ul>
-        <p class="fact-note" style="margin-bottom:24px;">B.S. Molecular &amp; Cellular Biology · Madison, WI. Selective public flagship university with a multi-billion dollar research enterprise dedicated to real-world impact and public service. Coursework in progress.</p>
-        <ul class="fact-list" style="margin-bottom:20px;">
-          <li><b>Illinois Mathematics and Science Academy</b><span class="code">2023 – 2026</span></li>
-        </ul>
-        <p class="fact-note">Aurora, IL. Selective residential public high school with rigorous STEM coursework and an emphasis on research and inquiry. Coursework included Organic Chemistry, Advanced Chemistry, the Calculus BC sequence, Biochemistry, and Differential Equations.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section id="research">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="num">02</span><h2>Research</h2><div class="rule"></div>
-    </div>
-    <ul class="entries">
-      <li class="entry reveal">
-        <div class="entry-meta">Independent Lab · Stanford University</div>
-        <h3>AI Surgical Robotics Research Contributor</h3>
-        <p>Research originating from Stanford biomedical AI efforts and evolving into an independent collaboration. Developing ML pipelines for surgical video understanding, annotation, and intelligent automation under mentorship from a Stanford PhD researcher.</p>
-        <div class="role-note"><b>Role</b>Literature review, AI pipeline development support, annotation workflow testing, computational analysis, and research documentation under supervision of study investigators.</div>
-      </li>
-      <li class="entry reveal">
-        <div class="entry-meta">Independent Lab</div>
-        <h3>AIthena Research Group</h3>
-        <p>Co-founded an independent AI research group producing peer-reviewed work in machine learning, computational neuroscience, and AI reasoning — without university affiliation.</p>
-      </li>
-      <li class="entry reveal">
-        <div class="entry-meta">Klein Lab · Northwestern University</div>
-        <h3>Alzheimer's Research</h3>
-        <p>One year under the guidance of Dr. Raghd Norwar, conducting quantitative assays to detect signal changes caused by the drug NU-9.</p>
-      </li>
-      <li class="entry reveal">
-        <div class="entry-meta">Minshall Lab · University of Illinois Chicago</div>
-        <h3>Triple Negative Breast Cancer Research</h3>
-        <p>One year under the guidance of Dr. Richard D. Minshall, conducting trans-endothelial electrical resistance (TEER) tests and Bradford assays to evaluate NS1643's impact on cell junctions.</p>
-      </li>
-      <li class="entry reveal">
-        <div class="entry-meta">Remote · Rockford University</div>
-        <h3>Assessing AI and Page Length Research</h3>
-        <p>Investigated how page length relates to false positives in GPT-Zero, discovering it flagged human-written essays. Presented findings to an audience of 25 at the ISAAPT conference.</p>
-      </li>
-    </ul>
-  </div>
-</section>
-
-<section id="experience">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="num">03</span><h2>Outreach &amp; Initiatives</h2><div class="rule"></div>
-    </div>
-    <ul class="entries">
-      <li class="entry reveal">
-        <div class="entry-meta">Nonprofit · Community Impact</div>
-        <h3>AURA Awareness</h3>
-        <p>Co-founded a nonprofit organization dedicated to supporting early breast cancer detection and awareness through fundraising and educational initiatives. $750 raised to date.</p>
-        <a class="pub-link" href="https://aura-awareness.vercel.app/" target="_blank" rel="noopener">Visit AURA Awareness →</a>
-        <a class="pub-link" href="https://www.gofundme.com/f/auras-mission-detect-cancer-early" target="_blank" rel="noopener" style="margin-left:16px;">GoFundMe →</a>
-      </li>
-    </ul>
-  </div>
-</section>
-
-<section id="publications">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="num">04</span><h2>Publications</h2><div class="rule"></div>
-    </div>
-    <ul class="ref-list">
-      <li class="ref reveal">
-        <div class="cite-title">Multimodal Discovery of Hidden Alzheimer's Disease Subtypes from MRI Data</div>
-        <div class="cite-venue">CVPR 2026 · First Author</div>
-        <div class="cite-desc">Analyzed data for an unsupervised ML pipeline identifying structural and functional subgroups in Alzheimer's disease.</div>
-        <a class="pub-link" href="https://drive.google.com/file/d/1g3ar25YMvLuOJoCNnqaFKBgEcfqEkeRv/view?usp=sharing" target="_blank" rel="noopener">Read the paper →</a>
-      </li>
-      <li class="ref reveal">
-        <div class="cite-title">Live-Cell Screening of Novel Autophagy-Enhancing Derivatives of NU-9 in Alzheimer's Disease</div>
-        <div class="cite-venue">IMSAloquium 2025 · First Author, Oral</div>
-        <div class="cite-desc">Analyzed data from live-cell screening assays evaluating autophagy-enhancing NU-9 derivatives.</div>
-      </li>
-      <li class="ref reveal">
-        <div class="cite-title">Assessing Page Length in Correspondence to GPT-Zero's False Positives</div>
-        <div class="cite-venue">ISAAPT 2024 · First Author, Oral</div>
-        <div class="cite-desc">Analyzed GPT-Zero's performance across different page lengths and presented findings at the ISAAPT conference.</div>
-      </li>
-      <li class="ref reveal">
-        <div class="cite-title">Effects of KV11.1 on Desmosomal Proteins: Desmoplakin and Plakophilin</div>
-        <div class="cite-venue">IMSAloquium 2024 · First Author, Oral</div>
-        <div class="cite-desc">Conducted assays evaluating the efficacy of NS1643 on triple negative breast cancer disease.</div>
-      </li>
-    </ul>
-  </div>
-</section>
-
-<section id="skills">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="num">05</span><h2>Skills</h2><div class="rule"></div>
-    </div>
-    <div class="skill-groups">
-      <div class="skill-group reveal">
-        <h4>Wet Lab Techniques</h4>
-        <div class="pill-row">
-          <span class="pill">Wet Lab Research</span>
-          <span class="pill">Cell Culture</span>
-          <span class="pill">Cell Freezing</span>
-          <span class="pill">Cell Counting</span>
-          <span class="pill">PBS and Buffer Preparation</span>
+        <div class="scholar-item reveal">
+          <a href="#" class="scholar-title">Live-Cell Screening of Novel Autophagy-Enhancing Derivatives of NU-9 in Alzheimer's Disease</a>
+          <div class="scholar-authors"><span class="self">R Patel</span>, R Norwar, WL Klein</div>
+          <div class="scholar-venue">IMSAloquium Oral Proceedings, 2025</div>
+          <div class="scholar-meta">
+            <span>Oral Presentation</span> — <span>PDF</span>
+          </div>
         </div>
-      </div>
-      <div class="skill-group reveal">
-        <h4>Assays &amp; Quantification</h4>
-        <div class="pill-row">
-          <span class="pill">TEER Testing</span>
-          <span class="pill">Bradford Assay</span>
-          <span class="pill">Quantitative Assays</span>
-          <span class="pill">Signal-To-Noise Ratio Assay</span>
-          <span class="pill">ImageJ Analysis</span>
-        </div>
-      </div>
-      <div class="skill-group reveal">
-        <h4>Computational</h4>
-        <div class="pill-row">
-          <span class="pill">Python</span>
-          <span class="pill">Data Analysis</span>
-          <span class="pill">Web Development</span>
-          <span class="pill">Machine Learning</span>
-        </div>
-      </div>
-      <div class="skill-group reveal">
-        <h4>Research &amp; Communication</h4>
-        <div class="pill-row">
-          <span class="pill">Scientific Writing</span>
-          <span class="pill">Conference Presentation</span>
-          <span class="pill">Science Communication</span>
-          <span class="pill">Outreach &amp; Fundraising</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section id="contact" style="border-bottom:none;">
-  <div class="wrap contact-inner">
-    <span class="kicker">Open to research &amp; collaboration</span>
-    <h2 class="big">Whether it's research, collaboration, or just a conversation about science and code — my inbox is open.</h2>
-    <div class="contact-links">
-      <a href="mailto:rajptl2026@gmail.com">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>
-        rajptl2026@gmail.com
-      </a>
-      <a href="https://github.com/rajptl14" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.93 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.83-2.34 4.68-4.57 4.92.36.31.68.92.68 1.86v2.76c0 .27.18.58.69.48A10 10 0 0 0 12 2z"></path></svg>
-        github.com/rajptl14
-      </a>
-      <a href="https://www.linkedin.com/in/rptl" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="8" y1="11" x2="8" y2="16"></line><line x1="8" y1="8" x2="8" y2="8"></line><path d="M12 16v-3.2c0-1 .8-1.8 1.8-1.8s1.8.8 1.8 1.8V16"></path></svg>
-        linkedin.com/in/raj-patel
-      </a>
-      <a href="https://drive.google.com/file/d/1kzynKZpoP8ODANV7VugmOHG_TSiotWo3/view?usp=sharing" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path></svg>
-        CV — PDF
-      </a>
-    </div>
-  </div>
-</section>
+        <div class="scholar-item reveal">
+          <a href="#" class="scholar-title">Assessing Page Length in Correspondence to Detection False Positives</a>
+          <div class="scholar-authors"><span class="self">R Patel</span></div>
+          <div class="scholar-venue">ISAAPT Conference, 2024</div>
+          <div class="scholar-meta">
+            <span>Conference Talk</span> — <span>Slide Deck</span>
+          </div>
+        </div>
 
-<footer>
-  <p>— Raj Patel · Molecular &amp; Cellular Biology, UW–Madison '30 —</p>
-</footer>
+      </div>
+    </section>
 
-<script>
-  // Light/dark mode toggle
-  (function(){
-    const root = document.documentElement;
-    const btn = document.getElementById('themeToggle');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    let saved = null;
-    try { saved = window.localStorage.getItem('theme'); } catch(e) {}
-    if(saved === 'dark' || (!saved && prefersDark)){
-      root.setAttribute('data-theme','dark');
-    }
-    btn.addEventListener('click', function(){
-      const isDark = root.getAttribute('data-theme') === 'dark';
-      if(isDark){
-        root.removeAttribute('data-theme');
-        try { window.localStorage.setItem('theme','light'); } catch(e) {}
-      } else {
-        root.setAttribute('data-theme','dark');
-        try { window.localStorage.setItem('theme','dark'); } catch(e) {}
-      }
+    <section id="news">
+      <div class="section-head">
+        <h2>News & Updates</h2>
+        <div class="rule"></div>
+      </div>
+      <ul class="news-list reveal">
+        <li class="news-item">
+          <span class="news-date">JUL 2026</span>
+          <span>Updated personal record and transitioned to University of Wisconsin–Madison.</span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">MAY 2026</span>
+          <span>Presented live-cell screening results at IMSAloquium 2025.</span>
+        </li>
+      </ul>
+    </section>
+
+    <section id="contact" style="border-bottom:none;">
+      <div class="contact-box reveal">
+        <span class="eyebrow">Correspondence</span>
+        <h2 style="font-family: var(--font-serif-head); margin: 12px 0;">Get In Touch</h2>
+        <p style="color: var(--ink-soft); margin-bottom: 20px;">Open to collaborations, academic inquiry, or computational biology discussions.</p>
+        <a href="mailto:rhpatel6@wisc.edu" class="btn btn-primary">rhpatel6@wisc.edu</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="text-align: center; padding: 32px 0; border-top: 1px solid var(--rule);">
+    <p class="mono" style="font-size: 0.75rem; color: var(--ink-soft);">© 2026 Raj Patel · Built with modern CSS & Web Standards</p>
+  </footer>
+
+  <script>
+    // Theme Toggle Logic
+    const toggleBtn = document.getElementById('themeToggle');
+    toggleBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
     });
-  })();
 
-  // Mobile nav toggle
-  (function(){
-    const navToggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
-    navToggle.addEventListener('click', function(){
-      const isOpen = navLinks.classList.toggle('open');
-      navToggle.classList.toggle('open', isOpen);
-      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
-    navLinks.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click', function(){
-        navLinks.classList.remove('open');
-        navToggle.classList.remove('open');
-        navToggle.setAttribute('aria-expanded','false');
+    // Intersection Observer for Smooth Scroll Animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          
+          // Trigger stat counter if inside section
+          const counters = entry.target.querySelectorAll('.num');
+          counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            let count = 0;
+            const speed = target / 30;
+            const updateCount = () => {
+              count += speed;
+              if (count < target) {
+                counter.innerText = Math.ceil(count);
+                setTimeout(updateCount, 30);
+              } else {
+                counter.innerText = target + (target === 750 ? '+' : '');
+              }
+            };
+            updateCount();
+          });
+        }
       });
-    });
-  })();
+    }, { threshold: 0.1 });
 
-  const items = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
-    });
-  }, {threshold:0.15});
-  items.forEach(i=>io.observe(i));
-</script>
-
+    document.querySelectorAll('.reveal, .hero').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
