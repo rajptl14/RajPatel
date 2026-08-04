@@ -80,7 +80,18 @@
   @media (hover: hover) and (pointer: fine) { body, a, button { cursor: none; } }
   @media (hover: none), (pointer: coarse) { #cursor-ring, #cursor-dot { display: none; } }
 
-  /* ───── shaped scroll rail ───── */
+  /* ───── theme toggle ───── */
+  .theme-toggle {
+    position: fixed; top: 24px; right: max(24px, calc(50vw - 550px)); z-index: 40;
+    width: 40px; height: 40px; display: grid; place-items: center;
+    border: 1px solid var(--line); border-radius: 999px;
+    background: var(--surface); backdrop-filter: blur(8px);
+    color: var(--ink); transition: all .2s ease;
+  }
+  .theme-toggle:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+  .theme-toggle svg { width: 17px; height: 17px; }
+  @media (max-width: 720px) { .theme-toggle { top: auto; bottom: 76px; right: 16px; } }
+
   .rail { position: fixed; left: max(26px, calc(50vw - 550px)); top: 50%; z-index: 40; transform: translateY(-50%); }
   .rail::before { content: ""; position: absolute; left: 5px; top: 6px; bottom: 6px; width: 1px; background: var(--line); }
   .rail a { position: relative; display: flex; align-items: center; gap: 11px; min-height: 76px; color: var(--muted); text-decoration: none; font: 400 9px 'JetBrains Mono', monospace; letter-spacing: .07em; text-transform: uppercase; }
@@ -224,6 +235,10 @@
   <div id="cursor-ring" aria-hidden="true"></div>
   <div id="cursor-dot" aria-hidden="true"></div>
 
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+    <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+  </button>
+
   <nav class="rail" aria-label="Section navigation">
     <a href="#home" data-section="home"><span class="rail-mark"></span><span class="rail-label">Home</span></a>
     <a href="#projects" data-section="projects"><span class="rail-mark"></span><span class="rail-label">Projects</span></a>
@@ -323,6 +338,7 @@
     publications: [
       { title: "Multimodal Discovery of Hidden Alzheimer's Disease Subtypes from MRI Data", authors: "<strong>Patel, R.</strong>, et al.", venue: "CVPR 2026 · Submission", url: "https://drive.google.com/file/d/1g3ar25YMvLuOJoCNnqaFKBgEcfqEkeRv/view?usp=sharing" },
       { title: "Live-Cell Screening of Novel Autophagy-Enhancing Derivatives of NU-9 in Alzheimer's Disease", authors: "<strong>Patel, R.</strong>; Norwar, R.; Klein, W.L.", venue: "IMSAloquium Oral Proceedings, 2025", url: "" },
+      { title: "Ion Channel Modulation of Desmosomal Proteins in Cancer", authors: "<strong>Patel, R.</strong>; Blankenship, J.; Minshall, R.D.", venue: "IMSAloquium Oral Proceedings, 2024", url: "" },
       { title: "Assessing Page Length in Correspondence to Detection False Positives", authors: "<strong>Patel, R.</strong>", venue: "ISAAPT Conference, 2024", url: "" }
     ],
     timeline: [
@@ -336,7 +352,7 @@
     recognition: [
       { label: "CVPR 2026, First-Author Submission", year: "2026" },
       { label: "Stanford Surgical Robotics AI Collaboration", year: "2026" },
-      { label: "IMSAloquium, Oral Proceedings", year: "2025" },
+      { label: "IMSAloquium, Oral Proceedings (x2)", year: "2024–25" },
       { label: "ISAAPT Conference Presentation", year: "2024" },
       { label: "AIthena Research Group, Co-Founder", year: "2025" },
       { label: "AURA Awareness, $750+ Raised", year: "2024–26" }
@@ -372,6 +388,27 @@
 
   $("recog-list").innerHTML = DATA.recognition.map(r => `
     <li><span>${r.label}</span><span>${r.year}</span></li>`).join("");
+
+  // theme toggle
+  const root = document.documentElement;
+  const toggleBtn = $('theme-toggle');
+  const themeIcon = $('theme-icon');
+  function applyTheme(dark) {
+    root.classList.toggle('dark', dark);
+    themeIcon.innerHTML = dark
+      ? '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor" stroke="none"/>'
+      : '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>';
+    try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+  }
+  let isDark;
+  try {
+    const saved = localStorage.getItem('theme');
+    isDark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+  } catch (e) {
+    isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  applyTheme(isDark);
+  toggleBtn.addEventListener('click', () => { isDark = !isDark; applyTheme(isDark); });
 
   // reveal-on-scroll
   const revealObserver = new IntersectionObserver((entries) => {
